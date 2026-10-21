@@ -1,0 +1,53 @@
+import { Router } from "express";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { createLoanController } from "../controllers/loans/create-loan.controller.js";
+import { acceptLoanController } from "../controllers/loans/accept-loan.controller.js";
+import {rejectLoanController} from "../controllers/loans/reject-loan.controller.js";
+import { listLoansController } from "../controllers/loans/list-loans.controller.js";
+import { requestReturnLoanController } from "../controllers/loans/request-return-loan.controller.js";
+import { confirmReturnLoanController } from "../controllers/loans/confirm-return-loan.controller.js";
+import { rateLoanController } from "../controllers/loans/rate-loan.controller.js";
+const loansRoutes = Router();
+
+loansRoutes.post(
+  "/",
+  authMiddleware,
+  createLoanController
+);
+
+loansRoutes.post(
+  "/:id/accept",
+  authMiddleware,
+  acceptLoanController
+);  
+
+loansRoutes.post(
+    "/:id/reject",
+    authMiddleware,
+    rejectLoanController
+)
+
+loansRoutes.get(
+  "/",
+  authMiddleware,
+  listLoansController
+);
+
+loansRoutes.post(
+  "/:id/request-return",
+  authMiddleware,
+  requestReturnLoanController
+);
+
+loansRoutes.post(
+  "/:id/confirm-return",
+  authMiddleware,
+  confirmReturnLoanController
+);
+
+loansRoutes.post(
+  "/:id/rate",
+  authMiddleware,
+  rateLoanController
+);
+export default loansRoutes;

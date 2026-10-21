@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" 
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  itemsOwned Item[]
+  loansOwned  Loan[] @relation("OwnerLoans")
+  loansTaken  Loan[] @relation("BorrowerLoans")
+}
+
+model Item {
+  id          Int      @id @default(autoincrement())
+  name        String
+  category    String
+  description String?
+  available   Boolean  @default(true)
+  ownerId     Int
+  createdAt   DateTime @default(now())
+
+  owner User @relation(fields: [ownerId], references: [id])
+  loans Loan[]
+}
+
+
+
+model Loan {
+  id         Int      @id @default(autoincrement())
+  itemId     Int
+  ownerId    Int
+  borrowerId Int
+  startDate  DateTime
+  returnDate DateTime
+  status     LoanStatus @default(PENDING)
+  rating     Int?
+  createdAt  DateTime @default(now())
+
+  item     Item @relation(fields: [itemId], references: [id])
+  owner    User @relation("OwnerLoans", fields: [ownerId], references: [id])
+  borrower User @relation("BorrowerLoans", fields: [borrowerId], references: [id])
+}
+
+enum LoanStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  ACTIVE
+  RETURN_REQUESTED
+  RETURNED
+}
