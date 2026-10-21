@@ -115,8 +115,4 @@ O projeto também contribuiu para minha compreensão de como uma interface depen
 ## 👨‍💻 Autor
 
 **Anselmo Henrique**
-
-Desenvolvedor com foco em aplicações web e mobile, interessado em construir soluções úteis, interfaces intuitivas e aplicações bem estruturadas.
-
-- GitHub: [Seu perfil do GitHub](URL_DO_SEU_GITHUB)
-- LinkedIn: [Seu perfil do LinkedIn](URL_DO_SEU_LINKEDIN)
+- LinkedIn: [Seu perfil do LinkedIn](https://www.linkedin.com/in/anselmo-henrique-266647233/?isSelfProfile=true)
