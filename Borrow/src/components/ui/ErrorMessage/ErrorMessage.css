@@ -1,0 +1,31 @@
+.error-message { display: grid; gap: 10px; padding: 12px 14px; border: 1px solid #ead0d0; border-radius: 9px; background: #fff8f8; color: #8a3030; font-size: 13px; }
+.error-message button { width: fit-content; padding: 0; border: 0; background: transparent; color: inherit; font-size: 13px; font-weight: 700; text-decoration: underline; }
+.loading {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #111111;
+}
+
+.loading__spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #e5e5e5;
+  border-top-color: #111111;
+  border-radius: 50%;
+  animation: loading-spin 0.7s linear infinite;
+}
+
+.loading p {
+  margin: 0;
+  font-size: 13px;
+}
+
+@keyframes loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
