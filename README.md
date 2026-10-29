@@ -121,7 +121,7 @@ Inicie a API:
 npm run dev
 ```
 
-Por padrão, a API inicia na porta `3333`. A rota raiz `http://localhost:3333/` retorna uma mensagem indicando que a API está funcionando.
+Localmente, a API inicia por padrão na porta `3333`. A rota raiz `http://localhost:3333/` retorna uma mensagem indicando que a API está funcionando. A versão hospedada está disponível em `https://borrow-7gma.onrender.com`.
 
 ### 3. Configurar o front-end
 
@@ -133,7 +133,7 @@ npm install
 npm run dev
 ```
 
-Abra no navegador o endereço local exibido pelo Vite. O front-end está configurado para consumir a API em `http://localhost:3333`.
+Abra no navegador o endereço local exibido pelo Vite. O front-end está configurado para consumir a API hospedada em `https://borrow-7gma.onrender.com`.
 
 ## Principais rotas da API
 
