@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
+    "build": "prisma generate --config prisma7.config.ts && tsc",
     "start": "node dist/server.js",
     "postinstall": "prisma skills sync || exit 0"
   },
