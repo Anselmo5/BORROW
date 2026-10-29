@@ -16,6 +16,8 @@ export async function registerController(
 
     return res.status(201).json(user);
   } catch (error) {
+    console.error("Erro ao cadastrar usuário:", error);
+
     return res.status(400).json({
       message: error instanceof Error
         ? error.message
