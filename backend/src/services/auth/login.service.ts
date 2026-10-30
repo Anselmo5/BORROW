@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { prisma } from "../../config/prisma.js";
+import { AppError } from "../../errors/app-error.js";
 
 interface LoginData {
   email: string;
@@ -16,7 +17,7 @@ export async function loginService({
   });
 
   if (!user) {
-    throw new Error("Email ou senha inválidos");
+    throw new AppError("Email ou senha inválidos", 401);
   }
 
   const passwordMatch = await bcrypt.compare(
@@ -25,7 +26,7 @@ export async function loginService({
   );
 
   if (!passwordMatch) {
-    throw new Error("Email ou senha inválidos");
+    throw new AppError("Email ou senha inválidos", 401);
   }
 
   const token = jwt.sign(

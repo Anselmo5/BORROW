@@ -1,3 +1,4 @@
+import { AppError } from "../../errors/app-error.js";
 import { loginService } from "../../services/auth/login.service.js";
 export async function loginController(req, res) {
     try {
@@ -9,10 +10,14 @@ export async function loginController(req, res) {
         return res.status(200).json(result);
     }
     catch (error) {
-        return res.status(401).json({
-            message: error instanceof Error
-                ? error.message
-                : "Erro ao realizar login",
+        if (!(error instanceof AppError)) {
+            console.error("Erro ao realizar login:", error);
+            return res.status(500).json({
+                message: "Erro interno ao realizar login",
+            });
+        }
+        return res.status(error.statusCode).json({
+            message: error.message,
         });
     }
 }
